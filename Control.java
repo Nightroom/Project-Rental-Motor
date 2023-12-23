@@ -1,14 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-//Ini adalah deklarasi variabel instance yang akan digunakan untuk menyimpan 
-//daftar penyewa (penyewaList) dan daftar penyediaan (penyedianList).
 
 public class Control {
     private ArrayList<Penyewa> penyewaList;
     private ArrayList<Penyediaan> penyedianList;
-    // Konstruktor ini digunakan untuk inisialisasi objek Control.
-    // Saat objek dibuat, daftar penyewa dan penyediaan diinisialisasi dengan data
-    // dummy.
 
     public Control() {
         penyewaList = new ArrayList<>();
@@ -20,9 +15,6 @@ public class Control {
     }
 
     public void run() {
-        // Metode ini adalah tempat utama untuk menjalankan logika aplikasi.
-        // Di dalamnya terdapat proses penyewaan motor, termasuk input pengguna,
-        // pencarian data penyewa, dan pemrosesan penyewaan.
         Scanner scanner = new Scanner(System.in);
         // Proses penyewaan
         System.out.println("Selamat datang di Rental Motor");
@@ -40,14 +32,7 @@ public class Control {
         } else {
             System.out.println("Data penyewa ditemukan!");
         }
-        // Bagian ini mengumpulkan informasi dari pengguna seperti nama dan NIK,
-        // kemudian mencari penyewa berdasarkan NIK. Jika penyewa tidak ditemukan,
-        // maka pembuatan objek penyewa baru dilakukan dan objek tersebut ditambahkan ke
-        // dalam daftar penyewa.
-        // Jika penyewa sudah ada, program memberi tahu bahwa data penyewa telah
-        // ditemukan.
 
-        // Tanyakan apakah penyewa memiliki KTP dan SIM
         System.out.print("Apakah Anda memiliki KTP? (y/n): ");
         char hasKTPInput = scanner.next().charAt(0);
         boolean hasKTP = hasKTPInput == 'y' || hasKTPInput == 'Y';
@@ -82,17 +67,11 @@ public class Control {
         } else {
             System.out.println("Maaf, penyewaan tidak dapat dilakukan tanpa SIM atau KTP.");
         }
-        // Bagian ini mengelola proses penyewaan. Jika pengguna memiliki KTP dan SIM,
-        // program menampilkan list barang sewaan, meminta pengguna untuk memilih
-        // barang,
-        // dan kemudian melakukan proses penyewaan menggunakan objek ProsesPenyewaan.
         scanner.close();
     }
 
     private Penyewa findPenyewaByNIK(String nik) {
-        // Metode ini melakukan pencarian penyewa berdasarkan NIK yang diberikan.
-        // Jika ditemukan, metode mengembalikan objek Penyewa, jika tidak, mengembalikan
-        // null.
+
         for (Penyewa penyewa : penyewaList) {
             if (penyewa.getNIK().equals(nik)) {
                 return penyewa;
@@ -108,11 +87,5 @@ public class Control {
         barangSewaanList.add(new BarangSewaan("Motor Suzuki", 55_000, namaPenyewa));
         return barangSewaanList;
     }
-    // Metode ini membuat dan mengembalikan ArrayList yang berisi objek-objek
-    // BarangSewaan.
-    // Data ini nantinya akan digunakan untuk menampilkan list barang sewaan kepada
-    // pengguna.
-    // Bagian ini juga mencetak list barang sewaan ke layar dengan harga dan nomor
-    // urut.
 
 }
